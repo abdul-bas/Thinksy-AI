@@ -5,7 +5,9 @@ import 'package:thinksy_ai/features/chat/data/datasources/chat_remote_data_sourc
 import 'package:thinksy_ai/features/chat/data/repositories/chat_repository_impl.dart';
 import 'package:thinksy_ai/features/chat/domain/usecases/send_message.dart';
 import 'package:thinksy_ai/features/chat/presentation/bloc/chat_bloc.dart';
-import 'package:thinksy_ai/features/chat/presentation/pages/chat_page.dart';
+import 'package:thinksy_ai/features/splash/presentation/bloc/splash_bloc.dart';
+import 'package:thinksy_ai/features/splash/presentation/bloc/splash_event.dart';
+import 'package:thinksy_ai/features/splash/presentation/pages/splash_page.dart';
 class ThinksyApp extends StatelessWidget {
   const ThinksyApp({super.key});
 
@@ -18,8 +20,21 @@ class ThinksyApp extends StatelessWidget {
 
     const seed = Color(0xFF6C5CE7);
 
-    return BlocProvider(
-      create: (context) => ChatBloc(sendMessage: sendMessage),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SplashBloc()..add(const SplashStarted()),
+          child: Container(),
+        ),BlocProvider(
+          create: (context) => ChatBloc(sendMessage: sendMessage),
+          child: Container(),
+        )
+       
+     
+      ],
+     
+    
+       
       child: MaterialApp(
         title: 'Thinksy AI',
         debugShowCheckedModeBanner: false,
@@ -35,7 +50,7 @@ class ThinksyApp extends StatelessWidget {
             brightness: Brightness.dark,
           ),
         ),
-        home: const ChatPage(),
+    home: const SplashPage(),
       ),
     );
   }
