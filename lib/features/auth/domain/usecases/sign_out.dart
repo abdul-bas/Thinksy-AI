@@ -1,0 +1,11 @@
+
+
+import 'package:thinksy_ai/features/auth/domain/repositories/auth_repository.dart';
+
+class SignOut {
+  final AuthRepository repository;
+
+  const SignOut(this.repository);
+
+  Future<void> call() => repository.signOut();
+}

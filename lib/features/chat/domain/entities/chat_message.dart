@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:thinksy_ai/core/enum/chat_role.dart';
+import 'package:thinksy_ai/core/utils/enum/chat_role.dart';
 
 
 class ChatMessage extends Equatable {

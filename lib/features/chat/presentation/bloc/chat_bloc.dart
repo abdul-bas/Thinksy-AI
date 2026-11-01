@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thinksy_ai/core/enum/chat_role.dart';
+import 'package:thinksy_ai/core/utils/enum/chat_role.dart';
 import 'package:thinksy_ai/core/error/failure.dart';
 import 'package:thinksy_ai/features/chat/domain/entities/chat_message.dart';
 import 'package:thinksy_ai/features/chat/domain/usecases/send_message.dart';

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "488411719736",
+    "project_id": "thinksy-ai-e1c1e",
+    "storage_bucket": "thinksy-ai-e1c1e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488411719736:android:ba9472196dc7dc16a3decd",
+        "android_client_info": {
+          "package_name": "com.example.thinksy_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1Y0dQDYXVQx7coKLuVeV0munGPasMHGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,18 +1,35 @@
-import 'package:flutter/widgets.dart';
-import 'package:thinksy_ai/features/chat/presentation/pages/chat_page.dart';
+import 'package:flutter/material.dart';
 
+import 'package:thinksy_ai/features/auth/presentation/bloc/auth/auth_state.dart';
+
+import 'package:thinksy_ai/features/auth/presentation/pages/login_page.dart';
+import 'package:thinksy_ai/features/chat/presentation/pages/chat_page.dart';
 class SplashController {
-  
-static  void openChat(BuildContext context) {
-    Navigator.of(context).pushReplacement(
-      PageRouteBuilder<void>(
-        transitionDuration: const Duration(milliseconds: 500),
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const ChatPage(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-      ),
-    );
+  void authValidate(BuildContext context, AuthState state) {
+    switch (state.status) {
+      case AuthStatus.unknown:
+        break;
+
+      case AuthStatus.authenticated:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ChatPage(),
+          ),
+        );
+        break;
+
+      case AuthStatus.unauthenticated:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginPage(),
+          ),
+        );
+        break;
+
+      default:
+        break;
+    }
   }
 }

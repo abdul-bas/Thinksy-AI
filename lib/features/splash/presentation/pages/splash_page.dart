@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thinksy_ai/features/auth/presentation/bloc/auth/auth_bloc.dart';
+import 'package:thinksy_ai/features/auth/presentation/bloc/auth/auth_state.dart';
 import 'package:thinksy_ai/features/chat/presentation/pages/chat_page.dart';
 import 'package:thinksy_ai/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:thinksy_ai/features/splash/presentation/bloc/splash_event.dart';
@@ -10,16 +12,16 @@ import 'package:thinksy_ai/features/splash/presentation/controller/splash_contro
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
-
+ 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
 
-    return BlocListener<SplashBloc, SplashState>(
+    return BlocListener<AuthBloc, AuthState>(
       listenWhen: (previous, current) =>
-          !previous.isCompleted && current.isCompleted,
-      listener: (context, state) => SplashController.openChat(context),
+          !previous.isCompleated && current.isCompleated,
+      listener: (context, state) => SplashController().authValidate(context, state),
       child: Scaffold(
         body: Container(
           width: double.infinity,
