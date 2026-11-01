@@ -1,22 +1,11 @@
 # Thinksy AI
 
-<p align="center">
-  <img src="assets/images/icon.png" alt="Thinksy AI logo" width="120" />
-</p>
+![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-3.4+-0175C2?logo=dart&logoColor=white)
+![State Management](https://img.shields.io/badge/State-Flutter%20BLoC-6C5CE7)
+![Firebase](https://img.shields.io/badge/Auth-Firebase-FFCA28?logo=firebase&logoColor=black)
 
-<p align="center">
-  <b>Ask. Think. Discover.</b><br/>
-  A cross-platform AI chat app built with Flutter, BLoC and the Gemini API.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white" alt="Flutter" />
-  <img src="https://img.shields.io/badge/Dart-3.4+-0175C2?logo=dart&logoColor=white" alt="Dart" />
-  <img src="https://img.shields.io/badge/State-Flutter%20BLoC-6C5CE7" alt="BLoC" />
-  <img src="https://img.shields.io/badge/Auth-Firebase-FFCA28?logo=firebase&logoColor=black" alt="Firebase" />
-</p>
-
-Thinksy AI lets users sign in with Firebase Authentication, ask questions, and receive AI-generated responses from Google Gemini in a clean, modern chat interface.
+Thinksy AI is a cross-platform AI chat application built with Flutter and powered by the Google Gemini API. Users sign in with Firebase Authentication, ask questions, and receive AI-generated responses in a clean, modern chat interface.
 
 ## Table of Contents
 
@@ -34,26 +23,29 @@ Thinksy AI lets users sign in with Firebase Authentication, ask questions, and r
 
 ## Screenshots
 
+### App
+
 <p align="center">
-  <img src="screenshots/splash.png" alt="Splash" width="200" />
-  <img src="screenshots/login.png" alt="Login" width="200" />
-  <img src="screenshots/register.png" alt="Register" width="200" />
-  <img src="screenshots/chat.png" alt="Chat" width="200" />
+  <img src="screenshots/splash.png" alt="Splash screen" width="200" />
+  <img src="screenshots/login.png" alt="Login screen" width="200" />
+  <img src="screenshots/register.png" alt="Register screen" width="200" />
+  <img src="screenshots/chat.png" alt="Chat screen" width="200" />
 </p>
 
-| Splash | Login | Register | Forgot password | Chat |
-| :----: | :---: | :------: | :-------------: | :--: |
-| `screenshots/splash.png` | `screenshots/login.png` | `screenshots/register.png` | `screenshots/forgot_password.png` | `screenshots/chat.png` |
+### Project structure
 
-> Add your app screenshots to the `screenshots/` folder using the file names above.
+<p align="center">
+  <img src="docs/images/project-structure-1.png" alt="Project structure: core, auth and chat" width="320" />
+  <img src="docs/images/project-structure-2.png" alt="Project structure: chat, splash and root files" width="320" />
+</p>
 
 ## Features
 
 - **AI chat:** ask questions and get Gemini-generated answers, with conversation context maintained through `previous_interaction_id`
 - **Authentication:** email/password login, registration and password reset with Firebase Auth
 - **Session handling:** an auth gate routes users to the chat or login screen based on their sign-in state
-- **Splash screen:** animated launch screen with the app logo
-- **Modern UI:** Material 3 design with light and dark themes, a typing indicator and suggestion chips
+- **Splash screen:** animated launch screen
+- **Modern UI:** Material 3 design with light and dark themes, typing indicator and suggestion chips
 - **Error handling:** clear, user-friendly messages for network and authentication errors
 
 ## Tech Stack
@@ -74,7 +66,7 @@ The project follows **Clean Architecture** and is organized by feature. Each fea
 
 - **Domain:** entities, repository contracts and use cases (pure Dart, no framework dependencies)
 - **Data:** remote data sources and repository implementations
-- **Presentation:** BLoCs, controllers, pages and widgets
+- **Presentation:** BLoCs, pages and widgets
 
 Dependencies point inward: presentation depends on domain, and data implements domain contracts. The UI never calls an API directly.
 
@@ -85,33 +77,25 @@ Dependencies point inward: presentation depends on domain, and data implements d
 
 ## Project Structure
 
-<p align="center">
-  <img src="docs/images/project-structure-1.png" alt="Project structure: core, auth and chat features" width="320" />
-  <img src="docs/images/project-structure-2.png" alt="Project structure: chat, splash and root files" width="320" />
-</p>
-
 ```
 lib/
 ├── main.dart
-├── thinksy_ai_app.dart
-├── firebase_options.dart
 ├── core/
+│   ├── constants/        # API constants
+│   ├── error/            # Failure type
 │   ├── network/          # Dio client
-│   ├── utils/
-│   │   ├── enum/         # Form status and other enums
-│   │   └── validators/   # Form validators
-│   └── widgets/          # Shared widgets
+│   └── utils/            # Form status, validators
 └── features/
     ├── splash/
-    │   └── presentation/ # bloc, controller, pages
+    │   └── presentation/ # SplashBloc, SplashPage
     ├── auth/
     │   ├── data/         # Firebase data source, repository implementation
     │   ├── domain/       # AuthUser, AuthRepository, use cases
-    │   └── presentation/ # bloc, controller, pages, widgets
+    │   └── presentation/ # AuthBloc, Login/Register/ForgotPassword blocs, pages, widgets
     └── chat/
         ├── data/         # Gemini data source, repository implementation
         ├── domain/       # ChatMessage, ChatReply, ChatRepository, SendMessage
-        └── presentation/ # bloc, controller, pages, widgets
+        └── presentation/ # ChatBloc, ChatPage, widgets
 ```
 
 ## Getting Started
@@ -142,10 +126,10 @@ cp .env.example .env
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-3.8-flash
+GEMINI_MODEL=gemini-3-flash-preview
 ```
 
-`GEMINI_MODEL` is optional and defaults to `gemini-3.8-flash`. The `.env` file is listed in `.gitignore` and must never be committed.
+`GEMINI_MODEL` is optional and defaults to `gemini-3-flash-preview`. The `.env` file is listed in `.gitignore` and must never be committed.
 
 ### 2. Firebase
 
@@ -170,12 +154,6 @@ GEMINI_MODEL=gemini-3.8-flash
   ```xml
   <uses-permission android:name="android.permission.INTERNET" />
   ```
-
-### 4. Launcher icon (optional)
-
-```bash
-dart run flutter_launcher_icons
-```
 
 ## Running the App
 
