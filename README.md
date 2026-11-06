@@ -166,13 +166,6 @@ flutter run
 - `.env` is bundled as an asset, so its values can be extracted from a release build. This is acceptable for development only.
 - For production, route Gemini requests through a backend service and keep the API key on the server.
 
-## Roadmap
-
-- [ ] Google sign-in
-- [ ] Email verification
-- [ ] Persistent chat history
-- [ ] Streaming responses
-- [ ] Image input
 
 ## Author
 
