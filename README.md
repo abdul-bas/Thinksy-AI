@@ -1,9 +1,6 @@
 # Thinksy AI
 
-![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-3.4+-0175C2?logo=dart&logoColor=white)
-![State Management](https://img.shields.io/badge/State-Flutter%20BLoC-6C5CE7)
-![Firebase](https://img.shields.io/badge/Auth-Firebase-FFCA28?logo=firebase&logoColor=black)
+
 
 Thinksy AI is a cross-platform AI chat application built with Flutter and powered by the Google Gemini API. Users sign in with Firebase Authentication, ask questions, and receive AI-generated responses in a clean, modern chat interface.
 
